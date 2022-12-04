@@ -1,7 +1,7 @@
 defmodule AdventOfCode.Day03 do
   def part1(suitcases) do
     Enum.map(suitcases, &split(&1))
-    |> Enum.map(&(fn [a, b] -> MapSet.intersection(a, b) end).(&1))
+    |> Enum.map(fn [a, b] -> MapSet.intersection(a, b) end)
     |> Enum.map(&MapSet.to_list(&1))
     |> List.flatten()
     |> Enum.map(&to_priority(&1))
@@ -28,23 +28,18 @@ defmodule AdventOfCode.Day03 do
   def find_badges([]), do: []
   def find_badges([_fst]), do: []
   def find_badges([_fst, _snd]), do: []
-
   def find_badges([fst, snd, thd | rest]) do
-    badge =
-      MapSet.intersection(fst, snd)
-      |> MapSet.intersection(thd)
-      |> MapSet.to_list()
-      |> hd
-      |> to_priority
-
-    [badge | List.flatten(find_badges(rest))]
+    [find_common(fst, snd, thd) | find_badges(rest)]
   end
 
-  def to_priority(char) do
-    case char do
-      x when x in 65..90 -> char - 38
-      x when x in 97..122 -> char - 96
-      _ -> IO.inspect(char)
-    end
+  def find_common(fst, snd, thd) do
+    MapSet.intersection(fst, snd)
+    |> MapSet.intersection(thd)
+    |> MapSet.to_list()
+    |> hd
+    |> to_priority
   end
+
+  def to_priority(char) when char < 97, do: char - 38
+  def to_priority(char), do: char - 96
 end
