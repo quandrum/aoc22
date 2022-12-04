@@ -1,8 +1,8 @@
 defmodule AdventOfCode.Day05 do
-  def part1(input) do
+  def part1(_input) do
   end
 
-  def part2(input) do
+  def part2(_input) do
   end
 
   def parseInput(input) do
