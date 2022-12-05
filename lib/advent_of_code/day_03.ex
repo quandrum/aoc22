@@ -28,6 +28,7 @@ defmodule AdventOfCode.Day03 do
   def find_badges([]), do: []
   def find_badges([_fst]), do: []
   def find_badges([_fst, _snd]), do: []
+
   def find_badges([fst, snd, thd | rest]) do
     [find_common(fst, snd, thd) | find_badges(rest)]
   end
