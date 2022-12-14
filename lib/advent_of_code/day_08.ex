@@ -1,7 +1,5 @@
 defmodule AdventOfCode.Day08 do
-  def part1(input) do
-    {{maxx, maxy}, map} = parse_input(input)
-
+  def part1({{maxx, maxy}, map}) do
     Enum.flat_map(Range.new(0, maxx - 1), fn x ->
       Enum.map(Range.new(0, maxy - 1), fn y ->
         {{x, y}, is_visible?({x, y}, map)}
@@ -36,9 +34,7 @@ defmodule AdventOfCode.Day08 do
     Enum.all?(rest, fn n -> n < tree end)
   end
 
-  def part2(input) do
-    {{maxx, maxy}, map} = parse_input(input)
-
+  def part2({{maxx, maxy}, map}) do
     Enum.flat_map(Range.new(1, maxx - 2), fn x ->
       Enum.map(Range.new(1, maxy - 2), fn y ->
         get_viewing_score({x, y}, map)

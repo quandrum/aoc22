@@ -1,12 +1,12 @@
 defmodule AdventOfCode.Day09 do
   def part1(input) do
-    parse_input(input)
+    input
     |> expand_moves
     |> move_n([{0, 0}, {0, 0}], MapSet.new())
   end
 
   def part2(input) do
-    parse_input(input)
+    input
     |> expand_moves
     |> move_n(Range.new(1, 10) |> Enum.map(fn _ -> {0, 0} end), MapSet.new())
   end

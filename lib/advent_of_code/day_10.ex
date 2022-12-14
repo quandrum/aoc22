@@ -1,8 +1,8 @@
 defmodule AdventOfCode.Day10 do
   def cycles(input) do
-    parse_input(input)
+    input
     |> Enum.scan(1, &(&1 + &2))
-    |> then(&[1 | &1])
+    |> (fn x -> [1 | x] end).()
   end
 
   def part1(input) do
