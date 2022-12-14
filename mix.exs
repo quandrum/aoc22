@@ -23,7 +23,8 @@ defmodule AdventOfCode2019.MixProject do
     [
       {:benchee, "~> 1.0"},
       {:httpoison, "~> 1.8"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:jason, "~> 1.4"}
     ]
   end
 end
